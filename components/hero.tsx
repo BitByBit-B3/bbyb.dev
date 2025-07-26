@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Github, Sparkles, Zap } from "lucide-react"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
