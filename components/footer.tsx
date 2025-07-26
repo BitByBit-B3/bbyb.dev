@@ -47,7 +47,7 @@ export function Footer() {
 
           <div className="border-t border-gray-200 pt-8 text-center">
             <p className="text-gray-600 flex items-center justify-center text-lg">
-              © 2024 BitByBit. All rights reserved. • Crafted with
+              © 2025 BitByBit. All rights reserved. • Crafted with
               <Heart className="h-5 w-5 mx-2 text-red-500 animate-pulse" />
               for ambitious businesses
             </p>
