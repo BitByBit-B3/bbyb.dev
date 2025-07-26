@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   title: 'bitbybit',
   description: 'Innovative solutions, one bit at a time',
   generator: 'bitbybit',
+  icons: {
+    icon: [
+      { url: '/inverted_image.png', sizes: '16x16', type: 'image/png' },
+      { url: '/inverted_image.png', sizes: '32x32', type: 'image/png' },
+      { url: '/inverted_image.png', sizes: '48x48', type: 'image/png' },
+    ],
+    shortcut: '/inverted_image.png',
+    apple: '/inverted_image.png',
+  },
 }
 
 export default function RootLayout({
@@ -15,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <style>{`
 html {
