@@ -7,10 +7,45 @@ import Image from "next/image"
 
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isHydrated, setIsHydrated] = useState(false)
+  const [orbProps, setOrbProps] = useState<Array<{
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+    animationDelay: number;
+    animationDuration: number;
+  }>>([])
+
+  useEffect(() => {
+    setIsHydrated(true)
+    setOrbProps(
+      Array.from({ length: 8 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        width: 20 + Math.random() * 40,
+        height: 20 + Math.random() * 40,
+        animationDelay: Math.random() * 6,
+        animationDuration: 4 + Math.random() * 4,
+      }))
+    )
+  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
+      
+      // Randomize orb positions on mouse move
+      setOrbProps(
+        Array.from({ length: 8 }, () => ({
+          left: Math.random() * 100,
+          top: Math.random() * 100,
+          width: 20 + Math.random() * 40,
+          height: 20 + Math.random() * 40,
+          animationDelay: Math.random() * 6,
+          animationDuration: 4 + Math.random() * 4,
+        }))
+      )
     }
 
     window.addEventListener("mousemove", handleMouseMove)
@@ -32,17 +67,17 @@ export function Hero() {
 
       {/* Floating glass orbs */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {isHydrated && orbProps.map((props, i) => (
           <div
             key={i}
             className="absolute glass rounded-full animate-float animate-pulse-glow"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${20 + Math.random() * 40}px`,
-              height: `${20 + Math.random() * 40}px`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${4 + Math.random() * 4}s`,
+              left: `${props.left}%`,
+              top: `${props.top}%`,
+              width: `${props.width}px`,
+              height: `${props.height}px`,
+              animationDelay: `${props.animationDelay}s`,
+              animationDuration: `${props.animationDuration}s`,
             }}
           />
         ))}

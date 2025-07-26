@@ -18,7 +18,7 @@ const teamMembers = [
     },
   },
   {
-    name: "Thilina Rathnakumara",
+    name: "Thilina Nimsara",
     role: "Backend Development Lead",
     description: "Backend specialist focused on server-side development, APIs, and database management.",
     skills: ["Node.js", "Database Design", "API Development", "Server Architecture"],
