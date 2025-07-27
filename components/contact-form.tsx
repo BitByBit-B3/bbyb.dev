@@ -29,23 +29,37 @@ export function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    console.log("Form submitted:", formData)
-    alert("Thank you for your inquiry! We'll get back to you within 24 hours.")
-    setIsSubmitting(false)
-
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      service: "",
-      budget: "",
-      timeline: "",
-      message: "",
-    })
+      if (response.ok) {
+        alert("Thank you for your inquiry! We'll get back to you within 24 hours.")
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          service: "",
+          budget: "",
+          timeline: "",
+          message: "",
+        })
+      } else {
+        const errorData = await response.json()
+        alert(`Error: ${errorData.error || 'Failed to send message'}`)
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (field: string, value: string) => {
@@ -142,7 +156,7 @@ export function ContactForm() {
 
           {/* Contact Form */}
           <ScrollAnimation className="lg:col-span-2" delay={400}>
-            <Card className="glass-card border-0 shadow-2xl">
+            <Card className="glass-card border-0 shadow-2xl rounded-3xl">
               <CardHeader>
                 <CardTitle className="text-3xl font-bold text-gray-800 flex items-center">Start Your Project</CardTitle>
                 <p className="text-gray-700 mt-2">
@@ -225,11 +239,12 @@ export function ContactForm() {
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
                         <SelectContent className="backdrop-blur-xl bg-white/80 border border-gray-200 shadow-xl rounded-2xl">
+                          <SelectItem value="1k-5k">$1K - $5K</SelectItem>
+                          <SelectItem value="5k-10k">$5K - $10K</SelectItem>
                           <SelectItem value="10k-25k">$10K - $25K</SelectItem>
                           <SelectItem value="25k-50k">$25K - $50K</SelectItem>
                           <SelectItem value="50k-100k">$50K - $100K</SelectItem>
-                          <SelectItem value="100k-250k">$100K - $250K</SelectItem>
-                          <SelectItem value="250k+">$250K+</SelectItem>
+                          <SelectItem value="custom">Custom Budget</SelectItem>
                           <SelectItem value="discuss">Let's Discuss</SelectItem>
                         </SelectContent>
                       </Select>
