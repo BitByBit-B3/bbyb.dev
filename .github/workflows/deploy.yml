@@ -17,6 +17,8 @@ jobs:
           version: 8
 
       - name: Install & Build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
           pnpm i 
           pnpm run build
