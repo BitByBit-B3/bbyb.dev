@@ -21,6 +21,7 @@ export async function POST(request: NextRequest) {
     const { data, error } = await resend.emails.send({
       from: 'BitByBit B3 <contact@bbyb.dev>',
       to: ['contact@bbyb.dev'],
+      cc: ['admin@bbyb.dev'],
       subject: `New Project Inquiry from ${name}`,
       react: ContactEmailTemplate({
         name,
