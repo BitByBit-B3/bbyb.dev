@@ -26,6 +26,7 @@ export function Footer() {
                 href="https://github.com/BitByBit-B3"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit our GitHub profile"
                 className="p-3 glass-dark rounded-xl text-gray-700 hover:text-black transition-all duration-300 apple-hover"
               >
                 <Github className="h-6 w-6" />
@@ -34,6 +35,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/bitbybit-b3"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit our LinkedIn company page"
                 className="p-3 glass-dark rounded-xl text-gray-700 hover:text-black transition-all duration-300 apple-hover"
               >
                 <Linkedin className="h-6 w-6" />
@@ -42,6 +44,7 @@ export function Footer() {
                 href="https://x.com/bitbybit_b3"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Follow us on X (formerly Twitter)"
                 className="p-3 glass-dark rounded-xl text-gray-700 hover:text-black transition-all duration-300 apple-hover"
               >
                 <X className="h-6 w-6" />
