@@ -16,12 +16,21 @@ jobs:
         with:
           version: 8
 
-      - name: Install & Build
+      - name: Install Dependencies
+        run: |
+          pnpm i
+
+      - name: Update Types
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
-          pnpm i 
-          pnpm run build
+          pnpm cf-typegen
+
+      - name: Update Types
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          pnpm opennextjs-cloudflare build
 
       - name: Publish to workers.dev
         uses: cloudflare/wrangler-action@v3
