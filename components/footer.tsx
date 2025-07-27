@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Heart, Code } from "lucide-react"
+import { Github, Linkedin, Heart, Code, X } from "lucide-react"
 import { ScrollAnimation } from "./scroll-animation"
 
 export function Footer() {
@@ -31,16 +31,20 @@ export function Footer() {
                 <Github className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/bitbybit-b3"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 glass-dark rounded-xl text-gray-700 hover:text-black transition-all duration-300 apple-hover"
               >
                 <Linkedin className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://x.com/bitbybit_b3"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 glass-dark rounded-xl text-gray-700 hover:text-black transition-all duration-300 apple-hover"
               >
-                <Twitter className="h-6 w-6" />
+                <X className="h-6 w-6" />
               </a>
             </div>
           </div>
