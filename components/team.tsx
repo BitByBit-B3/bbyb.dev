@@ -65,6 +65,18 @@ const teamMembers = [
       email: "sithumli@bitbybit.dev",
     },
   },
+  {
+    name: "Yasoga Nanayakkarawasam",
+    role: "DevOps Lead",
+    description: "DevOps specialist focused on infrastructure automation, CI/CD pipelines, and scalable deployment strategies.",
+    skills: ["CloudFlare", "CI/CD", "Automation", "Infrastructure"],
+    social: {
+      github: "#",
+      linkedin: "#",
+      twitter: "#",
+      email: "yasoga@bitbybit.dev",
+    },
+  },
 ]
 
 export function Team() {
@@ -94,10 +106,10 @@ export function Team() {
         <div className="flex flex-wrap justify-center gap-8">
           {teamMembers.map((member, index) => (
             <ScrollAnimation key={index} delay={index * 100}>
-              <Card className="glass-card hover:shadow-2xl transition-all duration-500 group apple-hover border-0 relative overflow-hidden w-80">
+              <Card className="glass-card hover:shadow-2xl transition-all duration-500 group apple-hover border-0 relative overflow-hidden w-80 h-[32rem] rounded-3xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-gray-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <CardContent className="p-8 relative z-10">
+                <CardContent className="p-8 relative z-10 flex flex-col h-full">
                   {/* Profile Initials */}
                   <div className="mb-6 relative">
                     <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-gray-900 to-black rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -111,7 +123,7 @@ export function Team() {
                   </div>
 
                   {/* Member Info */}
-                  <div className="text-center mb-6">
+                  <div className="text-center mb-6 flex-grow">
                     <h3 className="text-2xl font-bold text-black mb-2 group-hover:text-gray-800 transition-colors duration-300">
                       {member.name}
                     </h3>
@@ -120,7 +132,7 @@ export function Team() {
                   </div>
 
                   {/* Skills */}
-                  <div className="mb-6">
+                  <div className="mt-auto">
                     <div className="flex flex-wrap gap-2 justify-center">
                       {member.skills.map((skill, skillIndex) => (
                         <span
