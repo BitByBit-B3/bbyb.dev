@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   generator: 'bitbybit',
   icons: {
     icon: [
-      { url: '/inverted_image.png', sizes: '16x16', type: 'image/png' },
-      { url: '/inverted_image.png', sizes: '32x32', type: 'image/png' },
-      { url: '/inverted_image.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
     ],
-    shortcut: '/inverted_image.png',
-    apple: '/inverted_image.png',
+    shortcut: '/favicon.ico',
+    apple: '/favicon-32x32.png',
   },
 }
 
