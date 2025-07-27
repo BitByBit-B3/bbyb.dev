@@ -1,0 +1,25 @@
+name: Deploy Worker
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install & Build
+        run: |
+          pnpm ci 
+          pnpm run build
+
+      - name: Publish to workers.dev
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: publish --name bitbybit --workers-dev

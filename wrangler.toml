@@ -2,6 +2,7 @@ main = ".open-next/worker.js"
 name = "b3-web"
 compatibility_date = "2025-03-25"
 compatibility_flags = ["nodejs_compat"]
+workers_dev  = false
 
 [assets]
 directory = ".open-next/assets"
