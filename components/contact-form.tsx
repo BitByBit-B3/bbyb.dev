@@ -29,23 +29,37 @@ export function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    console.log("Form submitted:", formData)
-    alert("Thank you for your inquiry! We'll get back to you within 24 hours.")
-    setIsSubmitting(false)
-
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      service: "",
-      budget: "",
-      timeline: "",
-      message: "",
-    })
+      if (response.ok) {
+        alert("Thank you for your inquiry! We'll get back to you within 24 hours.")
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          service: "",
+          budget: "",
+          timeline: "",
+          message: "",
+        })
+      } else {
+        const errorData = await response.json()
+        alert(`Error: ${errorData.error || 'Failed to send message'}`)
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (field: string, value: string) => {
@@ -142,10 +156,10 @@ export function ContactForm() {
 
           {/* Contact Form */}
           <ScrollAnimation className="lg:col-span-2" delay={400}>
-            <Card className="glass-card border-0 shadow-2xl">
+            <Card className="glass-card border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-3xl font-bold text-black flex items-center">Start Your Project</CardTitle>
-                <p className="text-gray-600 mt-2">
+                <CardTitle className="text-3xl font-bold text-gray-900 flex items-center">Start Your Project</CardTitle>
+                <p className="text-gray-700 mt-2">
                   Tell us about your project and we'll provide a detailed proposal within 48 hours.
                 </p>
               </CardHeader>
@@ -153,20 +167,20 @@ export function ContactForm() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="group">
-                      <Label htmlFor="name" className="text-sm font-semibold text-gray-700">
+                      <Label htmlFor="name" className="text-sm font-semibold text-gray-800">
                         Full Name *
                       </Label>
                       <Input
                         id="name"
                         value={formData.name}
                         onChange={(e) => handleChange("name", e.target.value)}
-                        className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl transition-all duration-300 bg-white/50"
+                        className="mt-2 border-2 border-gray-300 focus:border-gray-900 rounded-xl transition-all duration-300 bg-white text-gray-900"
                         placeholder="John Doe"
                         required
                       />
                     </div>
                     <div className="group">
-                      <Label htmlFor="email" className="text-sm font-semibold text-gray-700">
+                      <Label htmlFor="email" className="text-sm font-semibold text-gray-800">
                         Email Address *
                       </Label>
                       <Input
@@ -174,7 +188,7 @@ export function ContactForm() {
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleChange("email", e.target.value)}
-                        className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl transition-all duration-300 bg-white/50"
+                        className="mt-2 border-2 border-gray-300 focus:border-gray-900 rounded-xl transition-all duration-300 bg-white text-gray-900"
                         placeholder="john@company.com"
                         required
                       />
@@ -182,25 +196,25 @@ export function ContactForm() {
                   </div>
 
                   <div className="group">
-                    <Label htmlFor="company" className="text-sm font-semibold text-gray-700">
+                    <Label htmlFor="company" className="text-sm font-semibold text-gray-800">
                       Company Name
                     </Label>
                     <Input
                       id="company"
                       value={formData.company}
                       onChange={(e) => handleChange("company", e.target.value)}
-                      className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl transition-all duration-300 bg-white/50"
+                      className="mt-2 border-2 border-gray-300 focus:border-gray-900 rounded-xl transition-all duration-300 bg-white text-gray-900"
                       placeholder="Your Company"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="group">
-                      <Label htmlFor="service" className="text-sm font-semibold text-gray-700">
+                      <Label htmlFor="service" className="text-sm font-semibold text-gray-800">
                         Service Needed *
                       </Label>
                       <Select onValueChange={(value) => handleChange("service", value)} required>
-                        <SelectTrigger className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white/50">
+                        <SelectTrigger className="mt-2 border-2 border-gray-300 focus:border-gray-900 rounded-xl bg-white text-gray-900">
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent>
@@ -217,11 +231,11 @@ export function ContactForm() {
                       </Select>
                     </div>
                     <div className="group">
-                      <Label htmlFor="budget" className="text-sm font-semibold text-gray-700">
+                      <Label htmlFor="budget" className="text-sm font-semibold text-gray-800">
                         Project Budget
                       </Label>
                       <Select onValueChange={(value) => handleChange("budget", value)}>
-                        <SelectTrigger className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white/50">
+                        <SelectTrigger className="mt-2 border-2 border-gray-300 focus:border-gray-900 rounded-xl bg-white text-gray-900">
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
                         <SelectContent>
@@ -237,11 +251,11 @@ export function ContactForm() {
                   </div>
 
                   <div className="group">
-                    <Label htmlFor="timeline" className="text-sm font-semibold text-gray-700">
+                    <Label htmlFor="timeline" className="text-sm font-semibold text-gray-800">
                       Project Timeline
                     </Label>
                     <Select onValueChange={(value) => handleChange("timeline", value)}>
-                      <SelectTrigger className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white/50">
+                      <SelectTrigger className="mt-2 border-2 border-gray-300 focus:border-gray-900 rounded-xl bg-white text-gray-900">
                         <SelectValue placeholder="When do you need this completed?" />
                       </SelectTrigger>
                       <SelectContent>
@@ -255,7 +269,7 @@ export function ContactForm() {
                   </div>
 
                   <div className="group">
-                    <Label htmlFor="message" className="text-sm font-semibold text-gray-700">
+                    <Label htmlFor="message" className="text-sm font-semibold text-gray-800">
                       Project Details *
                     </Label>
                     <Textarea
@@ -263,7 +277,7 @@ export function ContactForm() {
                       value={formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
                       placeholder="Tell us about your project goals, target audience, key features, and any specific requirements..."
-                      className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl min-h-[120px] transition-all duration-300 bg-white/50"
+                      className="mt-2 border-2 border-gray-300 focus:border-gray-900 rounded-xl min-h-[120px] transition-all duration-300 bg-white text-gray-900"
                       required
                     />
                   </div>
