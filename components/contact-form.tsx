@@ -214,7 +214,7 @@ export function ContactForm() {
                         Service Needed *
                       </Label>
                       <Select onValueChange={(value) => handleChange("service", value)} required>
-                        <SelectTrigger className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white text-gray-800">
+                        <SelectTrigger aria-label="Select a service" className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white text-gray-800">
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent className="backdrop-blur-xl bg-white/80 border border-gray-200 shadow-xl rounded-2xl">
@@ -235,7 +235,7 @@ export function ContactForm() {
                         Project Budget
                       </Label>
                       <Select onValueChange={(value) => handleChange("budget", value)}>
-                        <SelectTrigger className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white text-gray-800">
+                        <SelectTrigger aria-label="Select budget range" className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white text-gray-800">
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
                         <SelectContent className="backdrop-blur-xl bg-white/80 border border-gray-200 shadow-xl rounded-2xl">
@@ -256,7 +256,7 @@ export function ContactForm() {
                       Project Timeline
                     </Label>
                     <Select onValueChange={(value) => handleChange("timeline", value)}>
-                      <SelectTrigger className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white text-gray-800">
+                      <SelectTrigger aria-label="When do you need this completed?" className="mt-2 border-2 border-gray-200 focus:border-black rounded-xl bg-white text-gray-800">
                         <SelectValue placeholder="When do you need this completed?" />
                       </SelectTrigger>
                       <SelectContent className="backdrop-blur-xl bg-white/80 border border-gray-200 shadow-xl rounded-2xl">
