@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
 import { ContactEmailTemplate } from '@/components/email-template';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { getResend } from '@/lib/resend';
+import { ContactFormBody } from '@/types';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await request.json() as ContactFormBody;
     const { name, email, company, service, budget, timeline, message } = body;
 
     console.log('Received form data:', { name, email, company, service, budget, timeline, message });
@@ -20,14 +19,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if API key is configured
-    if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY not configured');
-      return NextResponse.json(
-        { error: 'Email service not configured' },
-        { status: 500 }
-      );
-    }
+    const resend = getResend();
 
     // Send email
     const { data, error } = await resend.emails.send({

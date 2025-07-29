@@ -20,12 +20,6 @@ jobs:
         run: |
           pnpm i
 
-      - name: Update Types
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-        run: |
-          pnpm cf-typegen
-
       - name: Build OpenNext
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
