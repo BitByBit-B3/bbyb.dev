@@ -20,9 +20,11 @@ jobs:
         run: |
           pnpm i
 
+      - name: Create Variables
+        run: |
+          echo ${{ secrets.RESEND_API_KEY }} >> .dev.vars
+
       - name: Update Types
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
           pnpm cf-typegen
 
