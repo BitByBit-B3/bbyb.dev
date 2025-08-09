@@ -116,19 +116,6 @@ export function ContactForm() {
                     </div>
                   </a>
 
-                  <a
-                    href="tel:+94713771561"
-                    className="flex items-center space-x-4 group apple-hover glass rounded-xl p-4"
-                  >
-                    <div className="p-3 bg-white/10 rounded-xl group-hover:bg-white/20 transition-colors duration-300">
-                      <Phone className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400">Call us</p>
-                      <span className="text-white font-medium">+94 71 377 1561</span>
-                    </div>
-                  </a>
-
                   <div className="flex items-center space-x-4 glass rounded-xl p-4">
                     <div className="p-3 bg-white/10 rounded-xl">
                       <MapPin className="h-6 w-6 text-white" />
