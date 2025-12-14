@@ -1,0 +1,26 @@
+# .github/dependabot.yml
+
+version: 2
+updates:
+  - package-ecosystem: "pnpm"
+    directory: "/"
+    schedule:
+      # Check for new updates daily
+      interval: "daily"
+    groups:
+      # 1. Group all Patch updates
+      # These are generally safe and can be merged quickly, often with auto-merge.
+      patch-updates:
+        update-types:
+          - "patch"
+          
+      # 2. Group all Minor updates
+      # These are a bit riskier, but batching them reduces PR volume.
+      minor-updates:
+        update-types:
+          - "minor"
+
+      # 3. Major updates (not explicitly in a group):
+      # Major updates are left to open as individual PRs (the default behavior). 
+      # This is best practice, as major updates often contain breaking changes 
+      # and need isolated review and testing.
