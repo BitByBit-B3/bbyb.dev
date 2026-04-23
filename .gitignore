@@ -1,23 +1,28 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
+
+# build outputs
+/dist
+/.next/
+/out/
+/build
+
+# astro
+.astro/
+
+# cloudflare / wrangler
+.wrangler/
+.open-next/
+.dev.vars
 
 # testing
 /coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
+.playwright-mcp/
 
 # misc
 .DS_Store
 *.pem
+*.tsbuildinfo
 
 # debug
 npm-debug.log*
@@ -27,14 +32,10 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
-.dev.vars
 
 # vercel
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# pnpm
 .pnpm-store/
-.open-next/
-.wrangler/
+pnpm-lock.yaml
