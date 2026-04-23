@@ -6,10 +6,12 @@ const links = [
   { href: "/work", label: "Work" },
   { href: "/team", label: "Team" },
   { href: "/careers", label: "Careers" },
+  { href: "https://blog.bbyb.dev", label: "Blog", external: true },
   { href: "/contact", label: "Contact" },
 ]
 
-function isActive(href: string): boolean {
+function isActive(href: string, external?: boolean): boolean {
+  if (external) return false
   if (href === "/") return pathname === "/"
   return pathname === href || pathname.startsWith(href + "/")
 }
@@ -21,7 +23,7 @@ function isActive(href: string): boolean {
     <div class="b3-nav-sep"></div>
     <div class="b3-nav-links">
       {links.map((l) => (
-        <a href={l.href} class={isActive(l.href) ? "active" : ""}>{l.label}</a>
+        <a href={l.href} class={isActive(l.href, l.external) ? "active" : ""} target={l.external ? "_blank" : undefined} rel={l.external ? "noopener noreferrer" : undefined}>{l.label}</a>
       ))}
     </div>
     <div class="b3-nav-sep"></div>
