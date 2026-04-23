@@ -1,0 +1,25 @@
+{
+  "title": "Infrastructure Engineer",
+  "team": "Engineering",
+  "location": "Remote (US)",
+  "type": "Full-time",
+  "salary": "$190k – $240k + equity",
+  "summary": "Own the cloud, CI/CD, and observability stack across client engagements.",
+  "about": "We run dozens of production systems for clients. You'll be the person who keeps them fast, cheap, and boring.",
+  "responsibilities": [
+    "Design and maintain AWS/GCP architectures for client products",
+    "Own Terraform modules, CI/CD pipelines, and observability",
+    "Lead incident response and post-mortems",
+    "Build internal tools for engineers"
+  ],
+  "requirements": [
+    "5+ years infra / SRE / platform engineering",
+    "Expert Terraform and either AWS or GCP",
+    "Kubernetes in production",
+    "Datadog, Prometheus, or equivalent — opinions welcome"
+  ],
+  "nice": [
+    "Cost optimization wins you can point to",
+    "Experience with multi-tenant SaaS"
+  ]
+}

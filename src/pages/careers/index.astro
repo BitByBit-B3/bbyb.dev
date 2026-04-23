@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import B3Nav from '../../components/B3Nav.astro'
+import B3Footer from '../../components/B3Footer.astro'
+import CareersIsland from '../../components/CareersIsland'
+import { jobs } from '../../lib/jobs'
+---
+
+<Layout
+  title="Careers — BitByBit"
+  description="Join a team that actually ships. Open roles across Engineering, Design, People, and Operations."
+>
+  <div class="page-fade">
+    <B3Nav />
+
+    <!-- Hero -->
+    <section
+      style="background:#000;color:#f5f5f7;padding:120px 22px 100px;position:relative;overflow:hidden;"
+    >
+      <div class="grid-bg"></div>
+      <div style="position:relative;z-index:1;max-width:980px;margin:0 auto;text-align:center;">
+        <p
+          class="eyebrow-center"
+          style="color:#86868b;margin-bottom:20px;text-transform:uppercase;font-size:14px;font-weight:600;letter-spacing:0.06em;"
+        >
+          Careers
+        </p>
+        <h1
+          class="b3-display"
+          style="font-size:clamp(56px,8vw,120px);color:#fff;margin:0 0 28px;"
+        >
+          Join a team that<br />actually ships.
+        </h1>
+        <p style="font-size:24px;color:#a1a1a6;max-width:560px;margin:0 auto 48px;line-height:1.4;">
+          We&rsquo;re fourteen engineers, designers, and operators building serious software.
+        </p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href="#open-roles" class="btn btn-dark btn-lg">See open roles</a>
+          <a href="#life-at-b3" class="btn btn-ghost-dark btn-lg">Life at B3 ›</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive island: life at B3, open roles, interview process -->
+    <CareersIsland jobs={jobs} client:load />
+
+    <B3Footer />
+  </div>
+</Layout>

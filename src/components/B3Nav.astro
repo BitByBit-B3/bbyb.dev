@@ -1,0 +1,52 @@
+---
+const pathname = Astro.url.pathname
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/work", label: "Work" },
+  { href: "/team", label: "Team" },
+  { href: "/careers", label: "Careers" },
+  { href: "/contact", label: "Contact" },
+]
+
+function isActive(href: string): boolean {
+  if (href === "/") return pathname === "/"
+  return pathname === href || pathname.startsWith(href + "/")
+}
+---
+
+<nav class="b3-nav" id="b3-nav">
+  <div class="b3-nav-pill">
+    <a href="/" class="b3-nav-logo">B3</a>
+    <div class="b3-nav-sep"></div>
+    <div class="b3-nav-links">
+      {links.map((l) => (
+        <a href={l.href} class={isActive(l.href) ? "active" : ""}>{l.label}</a>
+      ))}
+    </div>
+    <div class="b3-nav-sep"></div>
+    <a href="/contact" class="b3-nav-cta">
+      Start a project
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById("b3-nav")
+
+  function onScroll() {
+    if (nav) {
+      if (window.scrollY > 20) {
+        nav.classList.add("scrolled")
+      } else {
+        nav.classList.remove("scrolled")
+      }
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true })
+  onScroll()
+</script>

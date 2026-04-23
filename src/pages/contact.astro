@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro'
+import B3Nav from '../components/B3Nav.astro'
+import B3Footer from '../components/B3Footer.astro'
+import ContactForm from '../components/ContactForm'
+---
+<Layout title="Contact — BitByBit">
+  <B3Nav />
+  <ContactForm client:load />
+  <B3Footer />
+</Layout>

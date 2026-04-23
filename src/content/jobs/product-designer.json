@@ -1,0 +1,25 @@
+{
+  "title": "Senior Product Designer",
+  "team": "Design",
+  "location": "San Francisco",
+  "type": "Full-time",
+  "salary": "$160k – $210k + equity",
+  "summary": "Interaction design and prototyping for serious software. You'll sit next to engineers and ship.",
+  "about": "Our design team is small and deeply technical. You'll own product discovery, interaction design, and visual systems for 2–3 engagements. Prototype in code if you can; Figma if you can't yet — we'll teach.",
+  "responsibilities": [
+    "Lead design on client engagements from discovery to launch",
+    "Build interactive prototypes and design systems",
+    "Partner with engineers to implement fidelity-preserving UI",
+    "Contribute to B3's internal design standards"
+  ],
+  "requirements": [
+    "5+ years designing software products",
+    "Portfolio showing shipped interaction design (not just marketing)",
+    "Strong systems thinking — you know when to componentize and when not to",
+    "Comfortable communicating directly with clients"
+  ],
+  "nice": [
+    "Can prototype in code (React / SwiftUI / similar)",
+    "Experience in regulated industries (health, fintech)"
+  ]
+}

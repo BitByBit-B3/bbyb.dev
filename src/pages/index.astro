@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro'
+import B3Nav from '../components/B3Nav.astro'
+import B3Footer from '../components/B3Footer.astro'
+import HomeIsland from '../components/HomeIsland'
+---
+
+<Layout title="BitByBit — Software, bit by bit.">
+  <B3Nav />
+  <HomeIsland client:load />
+  <B3Footer />
+</Layout>

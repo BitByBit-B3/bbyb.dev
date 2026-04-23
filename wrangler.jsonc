@@ -1,10 +1,22 @@
 {
-  "main": ".open-next/worker.js",
   "name": "b3-app",
+  "account_id": "8f0203259905d8923687286c84921e6c",
   "compatibility_date": "2025-03-25",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "directory": ".open-next/assets",
+    "directory": "./dist",
     "binding": "ASSETS"
-  }
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "bitbybit0123@gmail.com"
+    }
+  ],
+  "ai": {
+    "binding": "AI"
+  },
+  "r2_buckets": [
+    { "binding": "CV_BUCKET", "bucket_name": "b3-cvs" }
+  ]
 }

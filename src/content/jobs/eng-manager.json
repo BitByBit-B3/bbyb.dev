@@ -1,0 +1,21 @@
+{
+  "title": "Engineering Manager",
+  "team": "Engineering",
+  "location": "San Francisco",
+  "type": "Full-time",
+  "salary": "$220k – $280k + equity",
+  "summary": "Lead a pod of 4–6 engineers across two client engagements. Hands-on; still shipping code.",
+  "about": "Our EMs are player-coaches. You'll own delivery for a pod, run 1:1s, and still write code reviews that raise the bar.",
+  "responsibilities": [
+    "Lead a pod of 4–6 engineers across client work",
+    "Own technical delivery and client relationships",
+    "Recruit and develop engineers on your pod",
+    "Stay close enough to the code to review PRs meaningfully"
+  ],
+  "requirements": [
+    "3+ years as an EM, 6+ years as an engineer before that",
+    "Shipped at least one product of real consequence",
+    "Comfortable speaking to executive clients"
+  ],
+  "nice": []
+}

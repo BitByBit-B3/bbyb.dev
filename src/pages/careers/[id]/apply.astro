@@ -1,0 +1,18 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import B3Nav from '../../../components/B3Nav.astro'
+import B3Footer from '../../../components/B3Footer.astro'
+import ApplyForm from '../../../components/ApplyForm'
+import { jobs } from '../../../lib/jobs'
+
+const { id } = Astro.params
+const job = jobs.find((j) => j.id === id)
+
+if (!job) return Astro.redirect('/careers')
+---
+
+<Layout title={`Apply — ${job.title} — BitByBit`} description={`Apply for ${job.title} at BitByBit. ${job.summary}`}>
+  <B3Nav />
+  <ApplyForm client:load jobId={job.id} jobTitle={job.title} jobTeam={job.team} jobLocation={job.location} />
+  <B3Footer />
+</Layout>

@@ -1,0 +1,25 @@
+{
+  "title": "AI Systems Engineer",
+  "team": "Engineering",
+  "location": "Remote (US / EU)",
+  "type": "Full-time",
+  "salary": "$200k – $260k + equity",
+  "summary": "Design and ship production LLM systems — agents, RAG pipelines, evals, and the infrastructure behind them.",
+  "about": "AI engineering at B3 is not prompt engineering. You'll own end-to-end systems: retrieval, tool use, evaluation harnesses, observability, and the pipelines that keep quality high as models and data shift.",
+  "responsibilities": [
+    "Design agentic systems with real tool use and grounded retrieval",
+    "Build offline and online evaluation pipelines",
+    "Optimize latency, cost, and reliability of LLM-backed features",
+    "Work directly with clients to scope and ship AI products"
+  ],
+  "requirements": [
+    "4+ years software engineering, 1+ shipping LLM systems in production",
+    "Strong Python, comfortable with async and streaming",
+    "Experience with vector stores, embeddings, and retrieval quality",
+    "Opinions about evals"
+  ],
+  "nice": [
+    "Published research or open-source work on LLMs",
+    "Infra experience with Kubernetes or serverless GPU"
+  ]
+}

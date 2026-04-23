@@ -1,0 +1,28 @@
+{
+  "title": "Senior Full-Stack Engineer",
+  "team": "Engineering",
+  "location": "San Francisco / Remote (US)",
+  "type": "Full-time",
+  "salary": "$180k – $240k + equity",
+  "summary": "Ship end-to-end products from Postgres to pixels. You'll lead technical scope on 2–3 client engagements at a time.",
+  "about": "We're looking for a senior engineer who's equally comfortable architecting a schema and shipping a polished UI. You'll work in small pods of 3–5, directly with our clients' technical leads, owning significant slices of real products from discovery through launch.",
+  "responsibilities": [
+    "Lead technical design and implementation on client engagements",
+    "Partner with designers to translate prototypes into production code",
+    "Own services, schemas, and deployment pipelines end-to-end",
+    "Mentor junior engineers and contribute to internal tooling",
+    "Participate in on-call rotation (quarterly week)"
+  ],
+  "requirements": [
+    "6+ years shipping production software",
+    "Deep experience with TypeScript and modern React (Next.js a plus)",
+    "Comfortable with Postgres, migrations, and complex queries",
+    "AWS or GCP in production",
+    "Strong written communication — you'll write design docs"
+  ],
+  "nice": [
+    "Previously worked in an agency or consulting context",
+    "Open source contributions",
+    "Experience with LLM-powered features"
+  ]
+}

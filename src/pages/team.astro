@@ -1,0 +1,184 @@
+---
+import Layout from "../layouts/Layout.astro"
+import B3Nav from "../components/B3Nav.astro"
+import B3Footer from "../components/B3Footer.astro"
+
+const teamMembers = [
+  {
+    name: "Arjun Mehta",
+    role: "Co-founder & CEO",
+    bio: "Previously led platform eng at a fintech unicorn. Believes the best meetings are the ones that don't happen.",
+    gradient: "linear-gradient(135deg, #0071e3, #64d2ff)",
+  },
+  {
+    name: "Lena Ortiz",
+    role: "Co-founder & CTO",
+    bio: "Distributed systems for a decade. Wrote the compiler for an obscure functional language you've probably never heard of.",
+    gradient: "linear-gradient(135deg, #1d1d1f, #424245)",
+  },
+  {
+    name: "Devon Park",
+    role: "Head of Design",
+    bio: "Ex-Apple, ex-Figma. Thinks pixel-perfect isn't a style, it's a baseline.",
+    gradient: "linear-gradient(135deg, #30d158, #00c7be)",
+  },
+  {
+    name: "Sana Rao",
+    role: "Principal Engineer",
+    bio: "Rust, Go, and whatever compiles fastest. Holds three patents in storage systems.",
+    gradient: "linear-gradient(135deg, #ff375f, #ff453a)",
+  },
+  {
+    name: "Mateo Cruz",
+    role: "AI Systems Lead",
+    bio: "Formerly at a frontier lab. Built eval pipelines for models you use every day.",
+    gradient: "linear-gradient(135deg, #bf5af2, #5e5ce6)",
+  },
+  {
+    name: "Clara Jensen",
+    role: "Engineering Manager",
+    bio: "Shipped at every scale from 3-person startup to 30,000-person enterprise. Happiest on-call.",
+    gradient: "linear-gradient(135deg, #ff9f0a, #ffd60a)",
+  },
+]
+
+const values = [
+  {
+    title: "Ship, then refine.",
+    description:
+      "Shipped code in staging teaches us more than another week of planning. We iterate in public.",
+  },
+  {
+    title: "Small teams, deep trust.",
+    description:
+      "Pods of 3–5. No handoff surface area. Everyone on the team has talked to your team.",
+  },
+  {
+    title: "The work speaks.",
+    description:
+      "We don't do sales decks or certification theater. Our case studies are links to live products.",
+  },
+  {
+    title: "Craft is a habit.",
+    description:
+      "Code reviews. Design reviews. Prose reviews. Nothing ships without another pair of eyes.",
+  },
+]
+
+function getInitials(name: string): string {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+}
+---
+
+<Layout title="Team | B3">
+  <B3Nav />
+
+  <!-- Hero -->
+  <section style="padding-top: 140px; padding-bottom: 40px; padding-left: 22px; padding-right: 22px; text-align: center;">
+    <div style="max-width: 980px; margin: 0 auto;">
+      <p style="font-size: 17px; font-weight: 600; color: #0071e3; letter-spacing: 0.01em; margin-bottom: 12px;">
+        The team
+      </p>
+      <h1
+        class="b3-display"
+        style="font-size: clamp(48px, 7vw, 104px); margin: 0 0 28px;"
+      >
+        Fourteen people.
+        <br />
+        One bar.
+      </h1>
+      <p class="subhead" style="margin-bottom: 0;">
+        We&apos;re deliberately small. Senior engineers, serious designers, and operators who&apos;ve shipped at scale.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team grid -->
+  <section
+    style="padding: 40px 22px 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 1200px; margin: 0 auto;"
+  >
+    {teamMembers.map((member) => (
+      <div
+        style="background: #f5f5f7; border-radius: 18px; padding: 32px; min-height: 360px; display: flex; flex-direction: column;"
+      >
+        <div
+          style={`width: 80px; height: 80px; border-radius: 50%; background: ${member.gradient}; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; flex-shrink: 0; color: #fff; font-family: var(--font-unbounded), sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.02em;`}
+        >
+          {getInitials(member.name)}
+        </div>
+        <h2
+          style="font-family: var(--font-unbounded), sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 4px; line-height: 1.2;"
+        >
+          {member.name}
+        </h2>
+        <p
+          style="font-size: 14px; font-weight: 500; color: #6e6e73; margin: 0 0 16px; letter-spacing: 0.005em;"
+        >
+          {member.role}
+        </p>
+        <p style="font-size: 15px; line-height: 1.6; color: #1d1d1f; margin: 0;">
+          {member.bio}
+        </p>
+      </div>
+    ))}
+  </section>
+
+  <!-- Values section -->
+  <section style="background: #000; color: #f5f5f7; padding: 100px 22px;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <p
+        class="eyebrow-center"
+        style="color: #86868b; margin-bottom: 4px;"
+      >
+        Values
+      </p>
+      <h2 class="headline" style="color: #f5f5f7;">
+        What we believe.
+      </h2>
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; margin-top: 48px;"
+      >
+        {values.map((value, index) => (
+          <div
+            style="padding: 40px 32px; background: #0a0a0a; border: 1px solid #1d1d1f;"
+          >
+            <p
+              style="font-family: var(--font-unbounded), monospace; font-size: 12px; color: #6e6e73; font-weight: 400; letter-spacing: 0.04em; margin: 0 0 20px;"
+            >
+              0{index + 1}
+            </p>
+            <h3
+              class="b3-display"
+              style="font-size: clamp(22px, 2.5vw, 32px); margin: 0 0 14px; color: #f5f5f7;"
+            >
+              {value.title}
+            </h3>
+            <p style="font-size: 17px; line-height: 1.55; color: #a1a1a6; margin: 0;">
+              {value.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA tile -->
+  <div class="tile-grid one" style="padding-bottom: 80px; padding-top: 80px;">
+    <div class="tile" style="background: #f5f5f7;">
+      <h2 class="tile-title">We&apos;re hiring.</h2>
+      <p class="tile-sub">
+        We&apos;re looking for engineers and designers who care about the details as much as we do.
+      </p>
+      <div class="tile-ctas">
+        <a href="/careers" class="btn btn-primary">
+          View open roles &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <B3Footer />
+</Layout>
