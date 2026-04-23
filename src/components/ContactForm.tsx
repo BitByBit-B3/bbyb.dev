@@ -140,14 +140,14 @@ const contactMethods = [
   },
   {
     icon: <PhoneIcon />,
-    label: "+1 (628) 555-0192",
-    sub: "Mon–Fri, 9am–6pm PT",
-    href: "tel:+16285550192",
+    label: "+94 71 377 1561",
+    sub: "+94 77 716 9804",
+    href: "tel:+94713771561",
   },
   {
     icon: <PinIcon />,
-    label: "San Francisco, CA",
-    sub: "415 Mission St, Floor 37",
+    label: "Colombo, Sri Lanka",
+    sub: "Remote-first, global reach",
     href: null,
   },
   {
