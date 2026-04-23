@@ -12,11 +12,5 @@
       "name": "EMAIL",
       "destination_address": "bitbybit0123@gmail.com"
     }
-  ],
-  "ai": {
-    "binding": "AI"
-  },
-  "r2_buckets": [
-    { "binding": "CV_BUCKET", "bucket_name": "b3-cvs" }
   ]
 }
