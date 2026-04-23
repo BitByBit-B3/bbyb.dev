@@ -512,9 +512,9 @@ export default function HomeIsland() {
             }}
           >
             {[
-              { counter: "47", suffix: "", label: "Products shipped" },
-              { counter: "12", suffix: "", label: "Industries served" },
-              { counter: "99.98", suffix: "%", label: "Uptime" },
+              { counter: "5", suffix: "", label: "Products shipped" },
+              { counter: "5", suffix: "", label: "Industries served" },
+              { counter: "99", suffix: "%", label: "Uptime" },
               { counter: "18", suffix: "d", label: "Avg time to deploy" },
             ].map((s) => (
               <div key={s.label}>
@@ -699,55 +699,8 @@ export default function HomeIsland() {
         className="sec"
         style={{ background: "#f5f5f7", paddingTop: 20, paddingBottom: 40 }}
       >
-        <div className="tile-grid two">
-          {/* Careers — black tile */}
-          <div className="tile tile-black spotlight-card" data-tilt>
-            <div className="eyebrow" style={{ textTransform: "uppercase", letterSpacing: "0.06em" }}>
-              Careers
-            </div>
-            <h2 className="tile-title" style={{ color: "#fff" }}>
-              Join the build team.
-            </h2>
-            <p className="tile-sub" style={{ color: "#a1a1a6" }}>
-              Small team, outsized impact. We hire generalists who ship.
-            </p>
-            <div className="tile-ctas">
-              <a href="/careers" className="btn btn-dark btn-lg">
-                View open roles
-              </a>
-            </div>
-            <div className="tile-visual">
-              <div
-                style={{
-                  display: "flex",
-                  gap: 8,
-                  flexWrap: "wrap",
-                  justifyContent: "center",
-                  padding: "32px 0 0",
-                  maxWidth: 340,
-                }}
-              >
-                {["Engineering", "Design", "Product", "DevOps", "AI/ML", "Full-Stack"].map((tag) => (
-                  <span
-                    key={tag}
-                    style={{
-                      padding: "6px 14px",
-                      borderRadius: 980,
-                      background: "rgba(255,255,255,0.06)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      color: "#f5f5f7",
-                      fontSize: 13,
-                      letterSpacing: "0.01em",
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Contact — light tile */}
+        <div className="tile-grid">
+          {/* Contact — full-width tile */}
           <div
             className="tile spotlight-card"
             data-tilt
