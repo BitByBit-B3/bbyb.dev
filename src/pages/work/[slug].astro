@@ -109,31 +109,42 @@ const { study } = Astro.props as { study: CaseStudy }
       </div>
     </section>
 
-    <!-- Repos -->
+    <!-- Source / NDA -->
     {study.repos.length > 0 && (
       <section style="background: #fbfbfd; padding: 60px 22px;">
         <div style="max-width: 980px; margin: 0 auto;">
           <p class="eyebrow-center" style="margin-bottom: 4px; text-align: left;">Source</p>
           <h2
             class="b3-display"
-            style="font-size: clamp(24px, 3vw, 36px); margin: 0 0 28px; letter-spacing: -0.02em;"
+            style="font-size: clamp(24px, 3vw, 36px); margin: 0 0 16px; letter-spacing: -0.02em;"
           >
-            Repositories
+            Under NDA
           </h2>
+          <p style="font-size: 15px; color: #6e6e73; margin: 0 0 28px; max-width: 640px; line-height: 1.55;">
+            This engagement is covered by a confidentiality agreement. We&apos;re happy to walk through the details — including architecture, implementation specifics, and outcomes — under a mutual NDA.
+          </p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
-            {study.repos.map((r) => (
-              <a
-                href={r.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                style="background: #fff; border: 1px solid #e8e8ed; border-radius: 14px; padding: 20px 24px; text-decoration: none; color: #1d1d1f; display: flex; justify-content: space-between; align-items: center; gap: 12px;"
-              >
-                <span style="font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: 14px; font-weight: 500;">
-                  {r.name}
-                </span>
-                <span style="font-size: 18px; opacity: 0.4;">↗</span>
-              </a>
-            ))}
+            {study.repos.map((r) => {
+              const isLinked = Boolean(r.href) && !r.isPrivate
+              const Tag = isLinked ? "a" : "div"
+              return (
+                <Tag
+                  {...(isLinked ? { href: r.href, target: "_blank", rel: "noopener noreferrer" } : {})}
+                  style="background: #fff; border: 1px solid #e8e8ed; border-radius: 14px; padding: 20px 24px; text-decoration: none; color: #1d1d1f; display: flex; justify-content: space-between; align-items: center; gap: 12px;"
+                >
+                  <span style="font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: 14px; font-weight: 500;">
+                    {r.name}
+                  </span>
+                  {r.isPrivate ? (
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6e6e73; border: 1px solid #e8e8ed; padding: 4px 10px; border-radius: 999px; flex-shrink: 0;">
+                      Private
+                    </span>
+                  ) : (
+                    <span style="font-size: 18px; opacity: 0.4;">↗</span>
+                  )}
+                </Tag>
+              )
+            })}
           </div>
         </div>
       </section>

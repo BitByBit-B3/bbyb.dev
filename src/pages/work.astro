@@ -53,85 +53,61 @@ const services = [
 
 const caseStudies = [
   {
-    slug: "neo-labor-tracker",
-    client: "Neo Construction",
-    description: "Labor tracking platform with dual-approval workflow. Worker → Manager → Admin, with attendance verification and photo proofs.",
-    tag: "Internal tool",
+    slug: "construction-operations",
+    client: "Construction Industry",
+    description: "A confidential operations platform that replaced a paper-driven workflow with a verified, edge-deployed system the whole org runs on.",
+    tag: "Enterprise · Internal tool",
     bg: "#1d1d1f",
     color: "#f5f5f7",
   },
   {
-    slug: "disasterops",
-    client: "DisasterOps AI",
-    description: "Real-time disaster response platform. Damage assessment ML, resource allocation, multimodal alerting for first responders.",
-    tag: "AI / public good",
+    slug: "travel-marketplace",
+    client: "Travel & Tourism",
+    description: "A two-sided marketplace with real-time inventory, multi-currency pricing, and automatic operator-side reconciliation.",
+    tag: "Marketplace · Two-sided",
     bg: "#f5f5f7",
     color: "#1d1d1f",
   },
   {
-    slug: "nextdo",
-    client: "NextDo",
-    description: "Microservices productivity stack — gateway, user service, notification service, AI service, portal UI, shared SDK.",
-    tag: "SaaS / microservices",
+    slug: "logistics-platform",
+    client: "Logistics",
+    description: "An on-demand logistics platform with transparent, geo-priced matching and a mobile-native operator console.",
+    tag: "Logistics · On-demand",
     bg: "#0a0a0a",
     color: "#f5f5f7",
-  },
-  {
-    slug: "bus-tourism",
-    client: "Bus Tourism LK",
-    description: "Booking platform for South Sri Lanka tour operators. Real-time seat inventory, payments, and operator dashboards.",
-    tag: "Marketplace",
-    bg: "#f5f5f7",
-    color: "#1d1d1f",
-  },
-  {
-    slug: "lorry-lk",
-    client: "Lorry.lk",
-    description: "On-demand freight booking. Match shippers with truck operators across Sri Lanka, end-to-end.",
-    tag: "Logistics",
-    bg: "#1d1d1f",
-    color: "#f5f5f7",
-  },
-  {
-    slug: "lions-plymouth",
-    client: "Lions Plymouth",
-    description: "Org website plus a full e-commerce arm for fundraising merchandise. Two surfaces, one stack.",
-    tag: "Non-profit",
-    bg: "#0a0a0a",
-    color: "#f5f5f7",
-  },
-  {
-    slug: "agentic-mail",
-    client: "mail.bbyb.dev",
-    description: "Agentic inbox built on Cloudflare's AI Inbox. Triage, draft, and route mail with LLMs in the loop.",
-    tag: "Internal AI tool",
-    bg: "#f5f5f7",
-    color: "#1d1d1f",
-  },
-  {
-    slug: "ticket-platform",
-    client: "Ticket Platform",
-    description: "Event ticketing system with a typed API and a fast frontend. Sold-out events, no melted servers.",
-    tag: "SaaS",
-    bg: "#1d1d1f",
-    color: "#f5f5f7",
-  },
-  {
-    slug: "govease",
-    client: "GovEase",
-    description: "Citizen-first portal that takes the friction out of public services. Built for the BitByBit Tech Triathlon.",
-    tag: "Hackathon win",
-    bg: "#f5f5f7",
-    color: "#1d1d1f",
   },
 ]
 
 const techStack = [
-  "TypeScript", "Next.js", "Astro", "React", "Tailwind",
-  "Node.js", "Express", "FastAPI", "Python", "Java", "Spring Boot",
-  "Cloudflare Workers", "Cloudflare D1", "Cloudflare R2", "Workers AI",
-  "Drizzle ORM", "Postgres", "Better Auth",
-  "OpenNext", "Wrangler",
+  // Languages
+  "TypeScript", "JavaScript", "Python", "Java", "Go", "Rust",
+  // Runtimes
+  "Node.js", "Bun", "Deno",
+  // Frameworks (frontend)
+  "Next.js", "Astro", "React", "Vue", "SvelteKit",
+  // Frameworks (backend)
+  "Express", "Hono", "NestJS", "FastAPI", "Spring Boot",
+  // UI / Styling
+  "Tailwind CSS", "Shadcn UI", "Radix", "Framer Motion", "TanStack Query",
+  // Cloudflare platform
+  "Cloudflare Workers", "Cloudflare D1", "Cloudflare R2", "Cloudflare KV",
+  "Durable Objects", "Workers AI", "Email Workers", "Queues", "Hyperdrive",
+  // Databases
+  "Postgres", "MySQL", "SQLite", "Redis", "MongoDB",
+  // ORMs / Data
+  "Drizzle ORM", "Prisma", "Zod",
+  // Auth
+  "Better Auth", "Clerk", "OAuth 2.0", "JWT",
+  // AI / LLM
+  "OpenAI", "Anthropic", "Workers AI", "Embeddings", "RAG",
+  // Payments / Comms
+  "Stripe", "Resend",
+  // Build / Deploy
+  "OpenNext", "Wrangler", "Turborepo", "Vite", "pnpm",
+  // CI / Observability
+  "GitHub Actions", "Docker", "Sentry", "PostHog",
+  // Testing
+  "Vitest", "Playwright",
 ]
 ---
 
