@@ -125,16 +125,9 @@ function getInitials(name: string): string {
         >
           {member.role}
         </p>
-        <p style="font-size: 15px; line-height: 1.6; color: #1d1d1f; margin: 0 0 16px;">
+        <p style="font-size: 15px; line-height: 1.6; color: #1d1d1f; margin: 0;">
           {member.bio}
         </p>
-        <div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px;">
-          {member.skills.map((skill) => (
-            <span style="font-size: 12px; font-weight: 500; color: #1d1d1f; background: #fff; border: 1px solid #e8e8ed; padding: 4px 10px; border-radius: 999px;">
-              {skill}
-            </span>
-          ))}
-        </div>
       </div>
     ))}
   </section>
