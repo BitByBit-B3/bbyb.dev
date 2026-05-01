@@ -5,15 +5,107 @@ export interface Props {
   title?: string
   description?: string
   ogImage?: string
+  noindex?: boolean
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 }
 
 const {
-  title = 'BitByBit — Software, bit by bit.',
-  description = 'We build serious software for serious teams. Custom products, AI systems, and the infrastructure behind them.',
+  title = 'BitByBit (B3) — Software, bit by bit.',
+  description = 'BitByBit (B3) is a Sri Lanka–based software studio. We design and ship serious software for serious teams — custom products, AI systems, and the infrastructure behind them.',
   ogImage = '/inverted_image.png',
+  noindex = false,
+  jsonLd,
 } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const ogImageURL = new URL(ogImage, Astro.site)
+
+const baseGraph: Record<string, unknown>[] = [
+  {
+    '@type': 'Organization',
+    '@id': 'https://bbyb.dev/#organization',
+    name: 'BitByBit',
+    alternateName: ['B3', 'BitByBit B3', 'bbyb', 'bbyb.dev'],
+    url: 'https://bbyb.dev',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://bbyb.dev/inverted_image.png',
+    },
+    description,
+    foundingLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Colombo',
+        addressCountry: 'LK',
+      },
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Colombo',
+      addressCountry: 'LK',
+    },
+    areaServed: 'Worldwide',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+94-71-377-1561',
+        contactType: 'customer support',
+        areaServed: 'Worldwide',
+        availableLanguage: ['English', 'Sinhala'],
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: '+94-77-716-9804',
+        contactType: 'sales',
+        areaServed: 'Worldwide',
+        availableLanguage: ['English', 'Sinhala'],
+      },
+    ],
+    sameAs: [
+      'https://github.com/BitByBit-B3',
+      'https://github.com/b3-competition',
+      'https://blog.bbyb.dev',
+    ],
+  },
+  {
+    '@type': 'WebSite',
+    '@id': 'https://bbyb.dev/#website',
+    url: 'https://bbyb.dev',
+    name: 'BitByBit',
+    alternateName: ['B3', 'BitByBit B3', 'bbyb'],
+    publisher: { '@id': 'https://bbyb.dev/#organization' },
+    inLanguage: 'en',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://bbyb.dev/?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+  {
+    '@type': 'ProfessionalService',
+    '@id': 'https://bbyb.dev/#service',
+    name: 'BitByBit (B3)',
+    alternateName: 'B3',
+    image: 'https://bbyb.dev/inverted_image.png',
+    url: 'https://bbyb.dev',
+    telephone: '+94-71-377-1561',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Colombo',
+      addressCountry: 'LK',
+    },
+    areaServed: 'Worldwide',
+    parentOrganization: { '@id': 'https://bbyb.dev/#organization' },
+  },
+]
+
+const extra = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
+const graph = { '@context': 'https://schema.org', '@graph': [...baseGraph, ...extra] }
 ---
 
 <!doctype html>
@@ -21,6 +113,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0a0a" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Favicon -->
@@ -28,6 +121,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon-128x128.png" />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <!-- Unbounded font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,20 +136,41 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={noindex
+        ? 'noindex, nofollow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
+    <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta name="author" content="BitByBit (B3)" />
+    <meta
+      name="keywords"
+      content="BitByBit, B3, bbyb, bbyb.dev, BitByBit B3, software studio Sri Lanka, software agency Colombo, custom software, AI agents, Cloudflare Workers"
+    />
     <meta name="darkreader-lock" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BitByBit (B3)" />
+    <meta property="og:locale" content="en_LK" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BitByBit (B3) — Software, bit by bit." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="BitByBit (B3) — Software, bit by bit." />
+
+    <!-- JSON-LD: Organization, WebSite, ProfessionalService (+ per-page) -->
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
   </head>
   <body>
     <slot />

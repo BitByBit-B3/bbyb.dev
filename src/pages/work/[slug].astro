@@ -11,9 +11,37 @@ export function getStaticPaths() {
 }
 
 const { study } = Astro.props as { study: CaseStudy }
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'BitByBit', item: 'https://bbyb.dev/' },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://bbyb.dev/work' },
+    { '@type': 'ListItem', position: 3, name: study.client, item: `https://bbyb.dev/work/${study.slug}` },
+  ],
+}
+
+const article = {
+  '@type': 'CreativeWork',
+  '@id': `https://bbyb.dev/work/${study.slug}#case-study`,
+  name: `${study.headline}`,
+  about: study.client,
+  headline: study.headline,
+  description: study.intro,
+  inLanguage: 'en',
+  isPartOf: { '@id': 'https://bbyb.dev/#website' },
+  author: { '@id': 'https://bbyb.dev/#organization' },
+  creator: { '@id': 'https://bbyb.dev/#organization' },
+  keywords: [study.tag, ...study.stack].join(', '),
+  url: `https://bbyb.dev/work/${study.slug}`,
+}
 ---
 
-<Layout title={`${study.client} | B3 Work`}>
+<Layout
+  title={`${study.client} — Case study | BitByBit (B3)`}
+  description={study.intro.length > 160 ? study.intro.slice(0, 157) + '…' : study.intro}
+  jsonLd={[breadcrumb, article]}
+>
   <B3Nav />
 
   <article>
