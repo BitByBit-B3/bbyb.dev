@@ -5,39 +5,45 @@ import B3Footer from "../components/B3Footer.astro"
 
 const teamMembers = [
   {
-    name: "Arjun Mehta",
-    role: "Co-founder & CEO",
-    bio: "Previously led platform eng at a fintech unicorn. Believes the best meetings are the ones that don't happen.",
+    name: "Methika Fernando",
+    role: "Team Lead",
+    bio: "Team leader and backend specialist overseeing the entire development lifecycle and system architecture.",
+    skills: ["Node.js", "Project Management", "System Architecture", "Backend Development"],
     gradient: "linear-gradient(135deg, #0071e3, #64d2ff)",
   },
   {
-    name: "Lena Ortiz",
-    role: "Co-founder & CTO",
-    bio: "Distributed systems for a decade. Wrote the compiler for an obscure functional language you've probably never heard of.",
+    name: "Thilina Nimsara",
+    role: "Backend Development Lead",
+    bio: "Backend specialist focused on server-side development, APIs, and database management.",
+    skills: ["Node.js", "Database Design", "API Development", "Server Architecture"],
     gradient: "linear-gradient(135deg, #1d1d1f, #424245)",
   },
   {
-    name: "Devon Park",
-    role: "Head of Design",
-    bio: "Ex-Apple, ex-Figma. Thinks pixel-perfect isn't a style, it's a baseline.",
+    name: "Tharun Devaraja",
+    role: "UI/UX Design Lead",
+    bio: "Creative visionary who turns complex ideas into intuitive, beautiful user experiences in Figma — and ships them on the frontend too.",
+    skills: ["Figma", "Design Systems", "React", "Frontend Development"],
     gradient: "linear-gradient(135deg, #30d158, #00c7be)",
   },
   {
-    name: "Sana Rao",
-    role: "Principal Engineer",
-    bio: "Rust, Go, and whatever compiles fastest. Holds three patents in storage systems.",
+    name: "Thanuka Perera",
+    role: "Marketing Lead",
+    bio: "Marketing strategist driving brand awareness, user acquisition, and growth across every product we ship.",
+    skills: ["Digital Marketing", "Brand Strategy", "Content Creation", "Market Research"],
     gradient: "linear-gradient(135deg, #ff375f, #ff453a)",
   },
   {
-    name: "Mateo Cruz",
-    role: "AI Systems Lead",
-    bio: "Formerly at a frontier lab. Built eval pipelines for models you use every day.",
+    name: "Sithumli Nanayakkara",
+    role: "Frontend Development Lead",
+    bio: "Frontend specialist creating responsive, interactive user interfaces with modern web technologies.",
+    skills: ["React", "TypeScript", "CSS/Tailwind", "Frontend Architecture"],
     gradient: "linear-gradient(135deg, #bf5af2, #5e5ce6)",
   },
   {
-    name: "Clara Jensen",
-    role: "Engineering Manager",
-    bio: "Shipped at every scale from 3-person startup to 30,000-person enterprise. Happiest on-call.",
+    name: "Ranuga Disansa",
+    role: "Contributor — Tech",
+    bio: "Tech contributor across the stack. Comfortable wherever the work is — infra, edge runtimes, AI integrations, or hammering on a frontend until it feels right.",
+    skills: ["TypeScript", "Cloudflare Workers", "AI Integration", "Full-stack"],
     gradient: "linear-gradient(135deg, #ff9f0a, #ffd60a)",
   },
 ]
@@ -86,7 +92,7 @@ function getInitials(name: string): string {
         class="b3-display"
         style="font-size: clamp(48px, 7vw, 104px); margin: 0 0 28px;"
       >
-        Fourteen people.
+        Six people.
         <br />
         One bar.
       </h1>
@@ -119,9 +125,16 @@ function getInitials(name: string): string {
         >
           {member.role}
         </p>
-        <p style="font-size: 15px; line-height: 1.6; color: #1d1d1f; margin: 0;">
+        <p style="font-size: 15px; line-height: 1.6; color: #1d1d1f; margin: 0 0 16px;">
           {member.bio}
         </p>
+        <div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px;">
+          {member.skills.map((skill) => (
+            <span style="font-size: 12px; font-weight: 500; color: #1d1d1f; background: #fff; border: 1px solid #e8e8ed; padding: 4px 10px; border-radius: 999px;">
+              {skill}
+            </span>
+          ))}
+        </div>
       </div>
     ))}
   </section>

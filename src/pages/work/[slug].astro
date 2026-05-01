@@ -1,0 +1,158 @@
+---
+export const prerender = true
+
+import Layout from "../../layouts/Layout.astro"
+import B3Nav from "../../components/B3Nav.astro"
+import B3Footer from "../../components/B3Footer.astro"
+import { studies, type CaseStudy } from "../../data/case-studies"
+
+export function getStaticPaths() {
+  return studies.map((s) => ({ params: { slug: s.slug }, props: { study: s } }))
+}
+
+const { study } = Astro.props as { study: CaseStudy }
+---
+
+<Layout title={`${study.client} | B3 Work`}>
+  <B3Nav />
+
+  <article>
+    <!-- Hero -->
+    <section
+      style={`background: ${study.bg}; color: ${study.color}; padding: 140px 22px 80px;`}
+    >
+      <div style="max-width: 980px; margin: 0 auto;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+          <a
+            href="/work"
+            style={`font-size: 13px; font-weight: 500; opacity: 0.6; color: ${study.color}; text-decoration: none;`}
+          >
+            &lsaquo; Back to work
+          </a>
+          <span style="opacity: 0.3;">·</span>
+          <span
+            style={`font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; border: 1px solid currentColor; padding: 4px 10px; border-radius: 999px;`}
+          >
+            {study.tag}
+          </span>
+          <span style="opacity: 0.3;">·</span>
+          <span style="font-size: 13px; opacity: 0.6;">{study.year}</span>
+        </div>
+        <p
+          style="font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.6; margin: 0 0 16px;"
+        >
+          {study.client}
+        </p>
+        <h1
+          class="b3-display"
+          style="font-size: clamp(40px, 6vw, 88px); margin: 0 0 28px; line-height: 1.05;"
+        >
+          {study.headline}
+        </h1>
+        <p style="font-size: 19px; line-height: 1.55; opacity: 0.78; max-width: 720px; margin: 0;">
+          {study.intro}
+        </p>
+      </div>
+    </section>
+
+    <!-- Meta strip -->
+    <section style="background: #fbfbfd; border-bottom: 1px solid #e8e8ed; padding: 28px 22px;">
+      <div style="max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 28px;">
+        <div>
+          <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6e6e73; margin: 0 0 6px;">Role</p>
+          <p style="font-size: 15px; color: #1d1d1f; margin: 0;">{study.role}</p>
+        </div>
+        <div>
+          <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6e6e73; margin: 0 0 6px;">Year</p>
+          <p style="font-size: 15px; color: #1d1d1f; margin: 0;">{study.year}</p>
+        </div>
+        <div style="grid-column: span 2;">
+          <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6e6e73; margin: 0 0 6px;">Stack</p>
+          <p style="font-size: 15px; color: #1d1d1f; margin: 0; line-height: 1.5;">{study.stack.join(" · ")}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section style="padding: 80px 22px 40px;">
+      <div style="max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+        {study.highlights.map((h) => (
+          <div style="background: #f5f5f7; border-radius: 18px; padding: 32px;">
+            <p
+              class="b3-display"
+              style="font-size: clamp(36px, 4.5vw, 56px); margin: 0 0 8px; line-height: 1;"
+            >
+              {h.metric}
+            </p>
+            <p style="font-size: 15px; color: #6e6e73; margin: 0; line-height: 1.45;">{h.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Body sections -->
+    <section style="padding: 40px 22px 80px;">
+      <div style="max-width: 720px; margin: 0 auto;">
+        {study.sections.map((s) => (
+          <div style="margin-bottom: 56px;">
+            <h2
+              class="b3-display"
+              style="font-size: clamp(26px, 3vw, 36px); margin: 0 0 16px; letter-spacing: -0.02em;"
+            >
+              {s.heading}
+            </h2>
+            <p style="font-size: 18px; line-height: 1.65; color: #1d1d1f; margin: 0; white-space: pre-wrap;">
+              {s.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Repos -->
+    {study.repos.length > 0 && (
+      <section style="background: #fbfbfd; padding: 60px 22px;">
+        <div style="max-width: 980px; margin: 0 auto;">
+          <p class="eyebrow-center" style="margin-bottom: 4px; text-align: left;">Source</p>
+          <h2
+            class="b3-display"
+            style="font-size: clamp(24px, 3vw, 36px); margin: 0 0 28px; letter-spacing: -0.02em;"
+          >
+            Repositories
+          </h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+            {study.repos.map((r) => (
+              <a
+                href={r.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style="background: #fff; border: 1px solid #e8e8ed; border-radius: 14px; padding: 20px 24px; text-decoration: none; color: #1d1d1f; display: flex; justify-content: space-between; align-items: center; gap: 12px;"
+              >
+                <span style="font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: 14px; font-weight: 500;">
+                  {r.name}
+                </span>
+                <span style="font-size: 18px; opacity: 0.4;">↗</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- CTA -->
+    <div class="tile-grid one" style="padding: 80px 0;">
+      <div class="tile tile-black">
+        <h2 class="tile-title">Got something like this in mind?</h2>
+        <p class="tile-sub">
+          Tell us what you&apos;re building. We&apos;ll scope it, price it, and ship it.
+        </p>
+        <div class="tile-ctas">
+          <a href="/contact" class="btn btn-dark">Start a project &rarr;</a>
+          <a href="/work" class="btn btn-light">See more work</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <B3Footer />
+</Layout>

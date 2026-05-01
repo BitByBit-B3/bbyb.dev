@@ -53,30 +53,85 @@ const services = [
 
 const caseStudies = [
   {
-    client: "Lattice Health",
-    description: "Rebuilt the patient portal. 3.2x faster, 40% lower bounce.",
+    slug: "neo-labor-tracker",
+    client: "Neo Construction",
+    description: "Labor tracking platform with dual-approval workflow. Worker → Manager → Admin, with attendance verification and photo proofs.",
+    tag: "Internal tool",
     bg: "#1d1d1f",
     color: "#f5f5f7",
   },
   {
-    client: "Forge Finance",
-    description: "Shipped an AI agent that automates compliance review.",
+    slug: "disasterops",
+    client: "DisasterOps AI",
+    description: "Real-time disaster response platform. Damage assessment ML, resource allocation, multimodal alerting for first responders.",
+    tag: "AI / public good",
     bg: "#f5f5f7",
     color: "#1d1d1f",
   },
   {
-    client: "Corvus Logistics",
-    description: "Real-time fleet dashboard. 2,400 trucks, one screen.",
+    slug: "nextdo",
+    client: "NextDo",
+    description: "Microservices productivity stack — gateway, user service, notification service, AI service, portal UI, shared SDK.",
+    tag: "SaaS / microservices",
     bg: "#0a0a0a",
     color: "#f5f5f7",
+  },
+  {
+    slug: "bus-tourism",
+    client: "Bus Tourism LK",
+    description: "Booking platform for South Sri Lanka tour operators. Real-time seat inventory, payments, and operator dashboards.",
+    tag: "Marketplace",
+    bg: "#f5f5f7",
+    color: "#1d1d1f",
+  },
+  {
+    slug: "lorry-lk",
+    client: "Lorry.lk",
+    description: "On-demand freight booking. Match shippers with truck operators across Sri Lanka, end-to-end.",
+    tag: "Logistics",
+    bg: "#1d1d1f",
+    color: "#f5f5f7",
+  },
+  {
+    slug: "lions-plymouth",
+    client: "Lions Plymouth",
+    description: "Org website plus a full e-commerce arm for fundraising merchandise. Two surfaces, one stack.",
+    tag: "Non-profit",
+    bg: "#0a0a0a",
+    color: "#f5f5f7",
+  },
+  {
+    slug: "agentic-mail",
+    client: "mail.bbyb.dev",
+    description: "Agentic inbox built on Cloudflare's AI Inbox. Triage, draft, and route mail with LLMs in the loop.",
+    tag: "Internal AI tool",
+    bg: "#f5f5f7",
+    color: "#1d1d1f",
+  },
+  {
+    slug: "ticket-platform",
+    client: "Ticket Platform",
+    description: "Event ticketing system with a typed API and a fast frontend. Sold-out events, no melted servers.",
+    tag: "SaaS",
+    bg: "#1d1d1f",
+    color: "#f5f5f7",
+  },
+  {
+    slug: "govease",
+    client: "GovEase",
+    description: "Citizen-first portal that takes the friction out of public services. Built for the BitByBit Tech Triathlon.",
+    tag: "Hackathon win",
+    bg: "#f5f5f7",
+    color: "#1d1d1f",
   },
 ]
 
 const techStack = [
-  "TypeScript", "Next.js", "Python", "Rust", "Swift", "Kotlin",
-  "Postgres", "Redis", "AWS", "GCP", "Kubernetes", "Terraform",
-  "OpenAI", "Anthropic", "LangGraph", "tRPC", "Prisma", "Tailwind",
-  "Stripe", "Segment",
+  "TypeScript", "Next.js", "Astro", "React", "Tailwind",
+  "Node.js", "Express", "FastAPI", "Python", "Java", "Spring Boot",
+  "Cloudflare Workers", "Cloudflare D1", "Cloudflare R2", "Workers AI",
+  "Drizzle ORM", "Postgres", "Better Auth",
+  "OpenNext", "Wrangler",
 ]
 ---
 
@@ -136,29 +191,34 @@ const techStack = [
         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 48px;"
       >
         {caseStudies.map((study) => (
-          <div
-            style={`background: ${study.bg}; color: ${study.color}; border-radius: 18px; padding: 40px; min-height: 360px; display: flex; flex-direction: column; justify-content: space-between;`}
+          <a
+            href={`/work/${study.slug}`}
+            style={`background: ${study.bg}; color: ${study.color}; border-radius: 18px; padding: 36px; min-height: 320px; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none;`}
           >
             <div>
-              <p
-                style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; margin-bottom: 20px;"
-              >
-                {study.client}
-              </p>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 12px;">
+                <p
+                  style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; margin: 0;"
+                >
+                  {study.client}
+                </p>
+                <span style={`font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.5; border: 1px solid currentColor; padding: 4px 8px; border-radius: 999px; flex-shrink: 0;`}>
+                  {study.tag}
+                </span>
+              </div>
               <h3
                 class="b3-display"
-                style="font-size: clamp(24px, 3vw, 40px); margin: 0; line-height: 1.1;"
+                style="font-size: clamp(20px, 2.2vw, 28px); margin: 0; line-height: 1.2;"
               >
                 {study.description}
               </h3>
             </div>
-            <a
-              href="#"
+            <span
               style={`font-size: 15px; font-weight: 500; color: ${study.color}; opacity: 0.7; margin-top: 32px; display: inline-block;`}
             >
               Read the case study &rsaquo;
-            </a>
-          </div>
+            </span>
+          </a>
         ))}
       </div>
     </div>
