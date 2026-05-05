@@ -1,64 +1,71 @@
-# b3-main-web
+# bbyb.dev
 
-# Local Development (OpenNext.js + Cloudflare)
+Source code for the [BitByBit (B3)](https://bbyb.dev) website, built with Astro and deployed on Cloudflare Workers.
 
-## Prerequisites
+## Stack
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [pnpm](https://pnpm.io/) (install globally with `npm install -g pnpm`)
-- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) (for Cloudflare deployment)
+- **Framework**: [Astro](https://astro.build/) with server-side rendering
+- **Adapter**: [@astrojs/cloudflare](https://docs.astro.build/en/guides/integrations-guide/cloudflare/) (Cloudflare Workers)
+- **UI**: React islands, Tailwind CSS, Radix UI
+- **Email**: Cloudflare Email Workers + Resend
+- **Deploy**: Cloudflare Workers via Wrangler
 
 ## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v18+
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
+
+### Setup
 
 1. **Install dependencies:**
 
    ```bash
-   pnpm install
+   npm install
    ```
 
-2. **Run the development server:**
+2. **Copy environment variables and fill in your values:**
+
    ```bash
-   pnpm dev
+   cp .dev.vars.example .dev.vars
    ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## OpenNext.js Cloudflare Commands
+3. **Run the development server:**
 
-- **Preview Cloudflare deployment locally:**
+   ```bash
+   npm run dev
+   ```
 
-  ```bash
-  pnpm preview
-  ```
+   Open [http://localhost:4321](http://localhost:4321) in your browser.
 
-  This builds the app and starts a local Cloudflare Worker preview.
+## Commands
 
-- **Deploy to Cloudflare:**
-
-  ```bash
-  pnpm deploy
-  ```
-
-  This builds and deploys the app to your configured Cloudflare environment.
-
-- **Type generation for Cloudflare environment:**
-  ```bash
-  pnpm cf-typegen
-  ```
-
-## Linting
-
-- **Lint the codebase:**
-  ```bash
-  pnpm lint
-  ```
+| Command | Description |
+|---|---|
+| `npm run dev` | Start local dev server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview with Wrangler (Cloudflare Worker) |
+| `npm run deploy` | Build and deploy to Cloudflare Workers |
+| `npm run cf-typegen` | Generate Cloudflare environment types |
 
 ## Project Structure
 
-- `app/` - Application routes and pages
-- `components/` - Reusable React components
-- `hooks/` - Custom React hooks
-- `lib/` - Utility functions
-- `public/` - Static assets
-- `styles/` - Global styles
+```
+src/
+├── components/   # Reusable Astro & React components
+├── data/         # Static data files
+├── layouts/      # Page layouts
+├── lib/          # Utility functions
+├── pages/        # File-based routes
+│   └── api/      # API endpoints
+├── styles/       # Global styles
+└── types/        # TypeScript types
+public/           # Static assets
+archive/          # Archived features (careers section)
+```
 
-For more details, see the source code and comments.
+## License
+
+[MIT](LICENSE)
+
