@@ -23,14 +23,20 @@ export function useB3Observe() {
 
 export function usePinScale(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const section = ref.current
     if (!section) return
     const content = section.querySelector<HTMLElement>(".pin-content")
     if (!content) return
 
+    content.style.opacity = "1"
+
     let rafId = 0
     let total = section.offsetHeight - window.innerHeight
-    const onResize = () => { total = section.offsetHeight - window.innerHeight }
+    const onResize = () => {
+      total = section.offsetHeight - window.innerHeight
+      onScroll()
+    }
 
     const onScroll = () => {
       if (rafId) return
@@ -41,7 +47,6 @@ export function usePinScale(ref: RefObject<HTMLElement | null>) {
         const p = total > 0 ? scrolled / total : 0
         const scale = 0.75 + Math.min(p / 0.7, 1) * 0.25
         content.style.transform = `scale(${scale})`
-        content.style.opacity = "1"
       })
     }
 
@@ -58,6 +63,7 @@ export function usePinScale(ref: RefObject<HTMLElement | null>) {
 
 export function useHScroll(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const wrap = ref.current
     if (!wrap) return
     const track = wrap.querySelector<HTMLElement>(".hscroll-track")
@@ -65,10 +71,11 @@ export function useHScroll(ref: RefObject<HTMLElement | null>) {
 
     let rafId = 0
     let total = wrap.offsetHeight - window.innerHeight
-    let maxTx = track.scrollWidth - window.innerWidth
+    let maxTx = Math.max(0, track.scrollWidth - window.innerWidth)
     const onResize = () => {
       total = wrap.offsetHeight - window.innerHeight
-      maxTx = track.scrollWidth - window.innerWidth
+      maxTx = Math.max(0, track.scrollWidth - window.innerWidth)
+      onScroll()
     }
 
     const onScroll = () => {
