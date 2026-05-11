@@ -23,42 +23,80 @@ export function useB3Observe() {
 
 export function usePinScale(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const section = ref.current
     if (!section) return
     const content = section.querySelector<HTMLElement>(".pin-content")
     if (!content) return
-    const onScroll = () => {
-      const rect = section.getBoundingClientRect()
-      const total = section.offsetHeight - window.innerHeight
-      const scrolled = Math.min(Math.max(-rect.top, 0), total)
-      const p = scrolled / total
-      const scale = 0.75 + Math.min(p / 0.7, 1) * 0.25
-      content.style.transform = `scale(${scale})`
-      content.style.opacity = "1"
+
+    content.style.opacity = "1"
+
+    let rafId = 0
+    let total = section.offsetHeight - window.innerHeight
+    const onResize = () => {
+      total = section.offsetHeight - window.innerHeight
+      onScroll()
     }
+
+    const onScroll = () => {
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        rafId = 0
+        const rect = section.getBoundingClientRect()
+        const scrolled = Math.min(Math.max(-rect.top, 0), total)
+        const p = total > 0 ? scrolled / total : 0
+        const scale = 0.75 + Math.min(p / 0.7, 1) * 0.25
+        content.style.transform = `scale(${scale})`
+      })
+    }
+
     window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onResize, { passive: true })
     onScroll()
-    return () => window.removeEventListener("scroll", onScroll)
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onResize)
+    }
   }, [ref])
 }
 
 export function useHScroll(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const wrap = ref.current
     if (!wrap) return
     const track = wrap.querySelector<HTMLElement>(".hscroll-track")
     if (!track) return
-    const onScroll = () => {
-      const rect = wrap.getBoundingClientRect()
-      const total = wrap.offsetHeight - window.innerHeight
-      const scrolled = Math.min(Math.max(-rect.top, 0), total)
-      const p = scrolled / total
-      const maxTx = track.scrollWidth - window.innerWidth
-      track.style.transform = `translate3d(${-p * maxTx}px, 0, 0)`
+
+    let rafId = 0
+    let total = wrap.offsetHeight - window.innerHeight
+    let maxTx = Math.max(0, track.scrollWidth - window.innerWidth)
+    const onResize = () => {
+      total = wrap.offsetHeight - window.innerHeight
+      maxTx = Math.max(0, track.scrollWidth - window.innerWidth)
+      onScroll()
     }
+
+    const onScroll = () => {
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        rafId = 0
+        const rect = wrap.getBoundingClientRect()
+        const scrolled = Math.min(Math.max(-rect.top, 0), total)
+        const p = total > 0 ? scrolled / total : 0
+        track.style.transform = `translate3d(${-p * maxTx}px, 0, 0)`
+      })
+    }
+
     window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onResize, { passive: true })
     onScroll()
-    return () => window.removeEventListener("scroll", onScroll)
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onResize)
+    }
   }, [ref])
 }
 
